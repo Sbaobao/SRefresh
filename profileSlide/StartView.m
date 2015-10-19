@@ -28,7 +28,7 @@ static CAShapeLayer * lineLayer;
     return self;
 }
 
-- (void)loadAnimation {
+- (void)loadAnimationWithView:(UIView *)view {
     
     UIBezierPath* bezierPath = UIBezierPath.bezierPath;
     [bezierPath moveToPoint: CGPointMake(2.73, 16.24)];
@@ -93,6 +93,8 @@ static CAShapeLayer * lineLayer;
     [lineLayer addAnimation:pathAnimation forKey:nil];
     
     [self.layer addSublayer:lineLayer];
+    
+    [view addSubview:self];
 }
 
 

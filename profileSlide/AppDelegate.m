@@ -46,8 +46,7 @@
     view.time = 4;
     view.frame = CGRectMake(0, 0, self.window.bounds.size.width/3, self.window.bounds.size.width/3);
     view.center = BaseImageView.center;
-    [view loadAnimation];
-    [BaseImageView addSubview:view];
+    [view loadAnimationWithView:BaseImageView];
     
     dispatch_time_t delayInNanoSeconds =dispatch_time(DISPATCH_TIME_NOW, view.time* NSEC_PER_SEC);
     // 延迟执行

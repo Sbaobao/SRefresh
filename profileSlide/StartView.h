@@ -18,7 +18,7 @@
 @property (nonatomic,assign) CGFloat time;
 
 
-- (void)loadAnimation;
+- (void)loadAnimationWithView:(UIView *)view;
 
 
 @end

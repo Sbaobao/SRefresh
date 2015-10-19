@@ -44,7 +44,7 @@
     
     StartView * view = [[StartView alloc]init];
     view.time = 4;
-    view.frame = CGRectMake(0, 0, self.window.bounds.size.width/3, self.window.bounds.size.width/3);
+    view.frame = CGRectMake(0, 0, self.window.bounds.size.width, 40);
     view.center = BaseImageView.center;
     [view loadAnimationWithView:BaseImageView];
     

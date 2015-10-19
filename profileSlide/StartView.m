@@ -33,14 +33,14 @@ static CAShapeLayer * lineLayer;
 - (void)loadAnimationWithView:(UIView *)view {
     
     CGFloat ScreenWidth = [UIScreen mainScreen].bounds.size.width;
-    
+    CGFloat height = self.frame.size.height;
     // 画心
     UIBezierPath* bezierPath = UIBezierPath.bezierPath;
-    [bezierPath moveToPoint:CGPointMake(LeftDistance, 40)];
-    [bezierPath addLineToPoint:CGPointMake(self.center.x, 40)];
-    [bezierPath addCurveToPoint:CGPointMake(self.center.x, 0) controlPoint1:CGPointMake(self.center.x-30, 20) controlPoint2:CGPointMake(self.center.x-40, -15)];
-    [bezierPath addCurveToPoint:CGPointMake(self.center.x, 40) controlPoint1:CGPointMake(self.center.x+40, -15) controlPoint2:CGPointMake(self.center.x+30, 20)];
-    [bezierPath addLineToPoint:CGPointMake(ScreenWidth-LeftDistance, 40)];
+    [bezierPath moveToPoint:CGPointMake(LeftDistance, height)];
+    [bezierPath addLineToPoint:CGPointMake(self.center.x, height)];
+    [bezierPath addCurveToPoint:CGPointMake(self.center.x, 0) controlPoint1:CGPointMake(self.center.x-height, height/2) controlPoint2:CGPointMake(self.center.x-height, -height*3/8)];
+    [bezierPath addCurveToPoint:CGPointMake(self.center.x, height) controlPoint1:CGPointMake(self.center.x+height, -height*3/8) controlPoint2:CGPointMake(self.center.x+height, height/2)];
+    [bezierPath addLineToPoint:CGPointMake(ScreenWidth-LeftDistance, height)];
     bezierPath.lineWidth = 1;
     [bezierPath stroke];
     

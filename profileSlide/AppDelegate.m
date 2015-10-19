@@ -36,21 +36,26 @@
 #pragma mark - 启动动画
 - (void)startAnimation {
     
-    __block StartView * view = [[StartView alloc]init];
+    
+    __block UIImageView * BaseImageView = [[UIImageView alloc] init];
+    BaseImageView.frame = self.window.frame;
+    BaseImageView.image = [UIImage imageNamed:@"blackBG"];
+    [self.window addSubview:BaseImageView];
+    
+    StartView * view = [[StartView alloc]init];
     view.time = 4;
-    view.frame = self.window.frame;
-    view.backgroundColor = [UIColor grayColor];
-    view.image = [UIImage imageNamed:@"blackBG"];
+    view.frame = CGRectMake(0, 0, self.window.bounds.size.width/3, self.window.bounds.size.width/3);
+    view.center = BaseImageView.center;
     [view loadAnimation];
-    [self.window addSubview:view];
+    [BaseImageView addSubview:view];
     
     dispatch_time_t delayInNanoSeconds =dispatch_time(DISPATCH_TIME_NOW, view.time* NSEC_PER_SEC);
     // 延迟执行
     dispatch_after(delayInNanoSeconds, dispatch_get_main_queue(), ^{
         [UIView animateWithDuration:1 animations:^{
-            view.alpha = 0;
+            BaseImageView.alpha = 0;
         } completion:^(BOOL finished) {
-            [view removeFromSuperview];
+            [BaseImageView removeFromSuperview];
         }];
     });
 

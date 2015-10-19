@@ -38,7 +38,6 @@
     [btn setTitle:@"start" forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(slideCLick) forControlEvents:UIControlEventTouchUpInside];
-    
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
     
     UIButton * btn1 = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];

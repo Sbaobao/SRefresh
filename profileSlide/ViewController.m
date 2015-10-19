@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "LoadingView.h"
 #import "UIScrollView+SRefresh.h"
+#import "StartView.h"
 
 #define ANGLE(angle) ((M_PI*angle)/180)
 

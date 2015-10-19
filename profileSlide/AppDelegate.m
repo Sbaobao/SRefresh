@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import "StartView.h"
+
 
 @interface AppDelegate ()
 
@@ -23,8 +25,35 @@
     ViewController * vc = [[ViewController alloc] init];
     UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
     self.window.rootViewController = nav;
+    [self.window makeKeyAndVisible];
+    
+    // 添加启动动画
+    [self startAnimation];
     
     return YES;
+}
+
+#pragma mark - 启动动画
+- (void)startAnimation {
+    
+    __block StartView * view = [[StartView alloc]init];
+    view.time = 4;
+    view.frame = self.window.frame;
+    view.backgroundColor = [UIColor grayColor];
+    view.image = [UIImage imageNamed:@"blackBG"];
+    [view loadAnimation];
+    [self.window addSubview:view];
+    
+    dispatch_time_t delayInNanoSeconds =dispatch_time(DISPATCH_TIME_NOW, view.time* NSEC_PER_SEC);
+    // 延迟执行
+    dispatch_after(delayInNanoSeconds, dispatch_get_main_queue(), ^{
+        [UIView animateWithDuration:1 animations:^{
+            view.alpha = 0;
+        } completion:^(BOOL finished) {
+            [view removeFromSuperview];
+        }];
+    });
+
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
